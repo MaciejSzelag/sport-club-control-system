@@ -3,14 +3,14 @@
 @section('tab-name', 'Member - Name')
 
 @section('page-name')
-Member name
+{{$member->name}}
 @endsection
 
 
 
 @section('content')
 @section('btns')
-<a href=""
+<a href="{{route('edit.user')}}"
     class="w-full pt-2 pb-2 pl-1 pr-1 hover:bg-white uppercase text-sm hover:scale-95 easy-in-out duration-100 cursor-pointer text-white hover:text-black">|
     <span class="text-[var(--color-secondary)] hover:text-[var(--color-primary_2)] ">
         &harr;</span>

@@ -1,53 +1,46 @@
 @extends('layouts/app')
 
-@section('tab-name', 'Create a new member')
+@section('tab-name')
+Edit
+@endsection
 
 @section('btns')
 
 
 @endsection
 @section('page-name')
-Create a new member
+Edit User
 @endsection
-@if($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+
 @section('content')
 <div class=" ml-10 mr-10 p-5 pb-0 flex justify-center  border border-[rgb(220,220,220)] rounded-md ">
-    <form action="{{route('member.store')}}" method="post">
+    <form action="">
         @csrf
-
         <div class="flex justify-center items-between flex-row flex-wrap border-b-1 border-gray-300">
             {{-- Personal informations --}}
             <div class="m-10  p-3 pl-5 pr-5 bg-slate-200 rounded-xl shadow-xl">
-                <p class="mb-4  font-medium  text-2xl text-gray-800">Personal Informations</p>
+                <p class="mb-4  font-medium  text-2xl text-gray-800">Update - Personal Informations</p>
                 <div class="w-120 flex justify-between">
                     <div class="">
-                        <label class="block mb-2 text-sm font-medium text-gray-700" for="name">Name</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="username">Name</label>
                         <input
                             class="w-full p-2 pl-4 pr-4 border border-gray-300 bg-gray-100 rounded-[50px] text-center focus:outline-none focus:ring-1 focus:ring-blue-500"
                             type="text" name="name" id="name" placeholder="Enter user name" required
                             autocomplete="off" />
                     </div>
                     <div class="">
-                        <label class="block mb-2 text-sm font-medium text-gray-700" for="last_name">Last Name</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="lastName">Last Name</label>
                         <input
                             class="w-full p-2 pl-4 pr-4 border border-gray-300 bg-gray-100 rounded-[50px] text-center focus:outline-none focus:ring-1 focus:ring-blue-500"
-                            type="text" name="last_name" id="last_name" placeholder="Enter user last name" required
+                            type="text" name="lastName" id="lastName" placeholder="Enter user last name" required
                             autocomplete="off" />
                     </div>
                 </div>
                 <div class="mt-3">
-                    <label class="block mb-2 text-sm font-medium text-gray-700" for="birth_date">Date of Birth</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-700" for="birthdate">Date of Birth</label>
                     <input
                         class="w-full p-2 border border-gray-300 bg-gray-100 rounded-[50px]  focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        type="date" name="birth_date" id="birth_date" required />
+                        type="date" name="birthdate" id="birthdate" required />
                 </div>
 
                 <div class="mt-3">
@@ -60,7 +53,7 @@ Create a new member
             </div>
             {{-- Contact Informations --}}
             <div class="w-100 m-10  p-3 pl-5 pr-5 bg-sky-100 rounded-xl shadow-xl">
-                <p class="mb-4  font-medium  text-2xl text-gray-800">Contact Informations</p>
+                <p class="mb-4  font-medium  text-2xl text-gray-800">Update - Contact Informations</p>
                 <div class="">
                     <label class="block mb-2 text-sm font-medium text-gray-700" for="username">Mobile</label>
                     <input
@@ -81,7 +74,7 @@ Create a new member
                     <input
                         class="w-full p-2 border border-gray-300 bg-gray-100 rounded-[50px] focus:outline-none focus:ring-2 focus:ring-blue-500"
                         type="text" name="address" id="address" placeholder="123 Main St" required
-                        autocomplete="address" />
+                        autocomplete="street-address" />
                 </div>
                 <div class="mt-3">
                     <label class="block mb-2 text-sm font-medium text-gray-700" for="postcode">Postcode</label>
@@ -94,7 +87,7 @@ Create a new member
             </div>
             {{-- Emergancy Informations --}}
             <div class="m-10  p-3 pl-5 pr-5 bg-red-100 rounded-xl shadow-xl">
-                <p class="mb-4  font-medium  text-2xl text-gray-800">Emergency Informations</p>
+                <p class="mb-4  font-medium  text-2xl text-gray-800">Update - Emergency Informations</p>
 
                 <div class="">
                     <label class="block mb-2 text-sm font-medium text-gray-700" for="emergency_phone">Emergency Contact
@@ -116,21 +109,21 @@ Create a new member
             </div>
             {{-- Membership plans --}}
             <div class="m-10  p-3 pl-5 pr-5 bg-blue-100 rounded-xl shadow-xl">
-                <p class="mb-4  font-medium  text-2xl text-gray-800">Membership Plan</p>
+                <p class="mb-4  font-medium  text-2xl text-gray-800">Update - Membership Plan</p>
                 <div class="w-120 ">
                     <div class="">
-                        <label class="block mb-2 text-sm font-medium text-gray-700" for="membership_plan">Paln</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="skill_Level">Paln</label>
 
-                        <select name="membership_plan" id="membership_plan" class="w-full p-2 outline-none bg-gray-100">
+                        <select name="skill_Level" id="skill_Level" class="w-full p-2 outline-none bg-gray-100">
 
-                            <option value="Adults - Brown">Adults - Brown</option>
-                            <option value="Adults - Silver">Adults - Silver</option>
-                            <option value="Adults - Gold">Adults - Gold</option>
-                            <option value="Adults - Diamond">Adults - Diamond</option>
-                            <option value="Kids - Brown">Kids - Brown</option>
-                            <option value="Kids - Silver">Kids - Silver</option>
-                            <option value="Kids - Gold">Kids - Gold</option>
-                            <option value="Kids - Diamond">Kids - Diamond</option>
+                            <option value="1">Adults - Brown</option>
+                            <option value="1">Adults - Silver</option>
+                            <option value="1">Adults - Gold</option>
+                            <option value="1">Adults - Diamond</option>
+                            <option value="1">Kids - Brown</option>
+                            <option value="1">Kids - Silver</option>
+                            <option value="1">Kids - Gold</option>
+                            <option value="1">Kids - Diamond</option>
 
                         </select>
                     </div>
@@ -138,42 +131,44 @@ Create a new member
             </div>
             {{-- Additional Informations --}}
             <div class="m-10  p-3 pl-5 pr-5 bg-blue-100 rounded-xl shadow-xl">
-                <p class="mb-4  font-medium  text-2xl text-gray-800">Additional Informations</p>
+                <p class="mb-4  font-medium  text-2xl text-gray-800">Update - Additional Informations</p>
                 <div class="w-120 ">
                     <div class="">
-                        <label class="block mb-2 text-sm font-medium text-gray-700" for="skill_level">Level</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="skill_Level">Level</label>
 
-                        <select name="skill_level" id="skill_level" class="w-full p-2 outline-none bg-gray-100">
-                            <option value="White">White</option>
-                            <option value="White - 1 stripe">White - 1 stripe</option>
-                            <option value="White - 2 stripes">White - 2 stripes</option>
-                            {{-- <option value="W-3">White - 3 stripes</option>
-                            <option value="W-4">White - 4 stripes</option>
-                            <option value="B">Blue</option>
-                            <option value="B-5">Blue - 1 stripe</option>
-                            <option value="B-6">Blue - 2 stripes</option>
-                            <option value="B-7">Blue - 3 stripes</option>
-                            <option value="B-8">Blue - 4 stripes</option>
-                            <option value="P">Purple</option>
-                            <option value="B">Brown</option>
-                            <option value="B">Black</option>
-                            <option value="BL-1">Black - 1st degree</option>
-                            <option value="BL-2">Black - 2nd degree</option>
-                            <option value="BL-3">Black - 3rd degree</option> --}}
+                        <select name="skill_Level" id="skill_Level" class="w-full p-2 outline-none bg-gray-100">
+                            <option value="1">White</option>
+                            <option value="1">White - 1 stripe</option>
+                            <option value="2">White - 2 stripes</option>
+                            <option value="3">White - 3 stripes</option>
+                            <option value="4">White - 4 stripes</option>
+                            <option value="5">Blue</option>
+                            <option value="5">Blue - 1 stripe</option>
+                            <option value="6">Blue - 2 stripes</option>
+                            <option value="7">Blue - 3 stripes</option>
+                            <option value="8">Blue - 4 stripes</option>
+                            <option value="9">Purple</option>
+                            <option value="10">Brown</option>
+                            <option value="11">Black</option>
+                            <option value="12">Black - 1st degree</option>
+                            <option value="13">Black - 2nd degree</option>
+                            <option value="14">Black - 3rd degree</option>
                         </select>
                     </div>
                     <div class="mt-3">
-                        <label class="block mb-2 text-sm font-medium text-gray-700" for="start_day">Start date</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="birthdate">Start date</label>
                         <input
                             class="w-full p-2 border border-gray-300 bg-gray-100 rounded-[50px]  focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            type="date" name="start_day" id="start_day" required />
+                            type="date" name="birthdate" id="birthdate" required />
                     </div>
                 </div>
             </div>
         </div>
         <div class="flex justify-center mt-5 mb-5 ">
             <button type="submit"
-                class=" p-2 pl-15 pr-15 rounded-[50px] bg-emerald-500 shadow-2xl text-gray-100 text-xl hover:bg-emerald-600 hover:shadow-xl hover:scale-97 linear duration-300 cursor-pointer">Save</button>
+                class=" p-2 pl-15 pr-15 ml-2 mr-2 rounded-[50px] bg-emerald-500 shadow-2xl text-gray-100 text-xl hover:bg-emerald-600 hover:shadow-xl hover:scale-97 linear duration-300 cursor-pointer">Save</button>
+            <a href="{{route('show.user')}}"
+                class=" p-2 pl-15 pr-15 ml-2 mr-2 rounded-[50px] bg-red-500 shadow-2xl text-gray-100 text-xl hover:bg-red-600 hover:shadow-xl hover:scale-97 linear duration-300 cursor-pointer">Cancel</a>
         </div>
     </form>
 
