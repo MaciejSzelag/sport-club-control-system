@@ -3,14 +3,14 @@
 @section('tab-name', 'Member - Name')
 
 @section('page-name')
-{{$member->name}}
+{{$member->name }} {{$member->last_name}}
 @endsection
 
 
 
 @section('content')
 @section('btns')
-<a href="{{route('edit.user')}}"
+<a href="{{route('edit.user',['member'=>$member->id])}}"
     class="w-full pt-2 pb-2 pl-1 pr-1 hover:bg-white uppercase text-sm hover:scale-95 easy-in-out duration-100 cursor-pointer text-white hover:text-black">|
     <span class="text-[var(--color-secondary)] hover:text-[var(--color-primary_2)] ">
         &harr;</span>
@@ -24,33 +24,33 @@
 
 
 @endsection
-<div class="p-5 ml-5 mr-5 flex justify-between flex-wrap border border-[rgb(220,220,220)] rounded-md ">
+<div class="p-5 ml-5 mr-5 flex justify-evenly flex-wrap border border-[rgb(220,220,220)] rounded-md ">
     <div class="m-5 p-5 rounded-xl shadow-xl linear duration-300 hover:scale-104">
         <p class="w-full pb-3 border-b-1 border-grey-50 text-center uppercase">Status</p>
         <table class="p-5 m-5 mb-10 border border-[rgb(220,220,220)] rounded-xl">
             <tr class="border-b-1">
                 <th class="p-2 m-1 bg-[var(--color-color_bg_table)] text-[white] text-left overflow-hidden">Membership
                     status</th>
-                <td class="p-2 m-1 bg-green-100 text-green-700">Active</td>
+
+
+                @if($member->status == 1)
+                <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-green-700 bg-green-100 text-green-600">Active</td>
+                @elseif($member->status == 0)
+                <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-blue-700 bg-blue-100 text-blue-600">Suspended</td>
+                @else
+                <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-red-700 bg-red-100 text-red-600">Inactive</td>
+
+                @endif
             </tr>
 
             <tr>
                 <th class="p-2 m-1 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Membership
                     Plan
                 </th>
-                <td class="p-2 m-1">Gold-60</td>
+                <td class="p-2 m-1">{{$member->membership_plan}}</td>
             </tr>
         </table>
-        <form action="" class="flex flex-col p-5 rounded bg-gray-200">
-            @csrf
-            <label for="status" class="p-2 rounded bg-[var(--color-color_bg_table)] text-white">Update Status</label>
-            <select name="stas#tus" id="status" class="p-2 outline-none bg-white">
-                <option value="1">Active</option>
-                <option value="2">Inactive</option>
-                <option value="3">Suspended</option>
-            </select>
-            <button type="submit" class="p-2 bg-blue-500 mt-8 text-white cursor-pointer">Confirm</button>
-        </form>
+
     </div>
 
     <div class="m-5 p-5 rounded-xl shadow-xl linear duration-300 hover:scale-104">
@@ -61,17 +61,24 @@
             <tr class="border-b-1">
                 <th class="p-2 m-1 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Start Date
                 </th>
-                <td class="p-2 m-1">15-05-2016</td>
+                <td class="p-2 m-1">{{$member->start_day}}</td>
             </tr>
             <tr class="border-b-1">
-                <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Natonality
+                <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">
+                    {{$member->nationality}}
                 </th>
                 <td class="p-2 pl-4 pr-4">Poland</td>
             </tr>
 
+            <tr class="border-b-1">
+                <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Date of birth
+                </th>
+                <td class="p-2 pl-4 pr-4">{{$member->birth_date}}</td>
+            </tr>
+
             <tr>
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Age</th>
-                <td class="p-2 pl-4 pr-4">42</td>
+                <td class="p-2 pl-4 pr-4">{{$memberAge}}</td>
             </tr>
 
         </table>
@@ -82,27 +89,27 @@
         <table class="p-5 m-5 mb-10  border border-[rgb(220,220,220)] rounded-xl">
             <tr class="border-b-1">
                 <th class="p-2 bg-red-300 text-red-700 text-left overflow-hidden">Emergancy Contact</th>
-                <td class="p-2 pl-4 pr-4">07877 320658</td>
+                <td class="p-2 pl-4 pr-4">{{$member->emergency_phone}}</td>
             </tr>
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Contact
                 </th>
-                <td class="p-2 pl-4 pr-4">07877 320658</td>
+                <td class="p-2 pl-4 pr-4">{{$member->mobile}}</td>
             </tr>
 
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Email</th>
-                <td class="p-2 pl-4 pr-4">szelag.maciej@gmail.com</td>
+                <td class="p-2 pl-4 pr-4">{{$member->email}}</td>
             </tr>
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Address
                 </th>
-                <td class="p-2 pl-4 pr-4">159 Granby Street</td>
+                <td class="p-2 pl-4 pr-4">{{$member->address}}t</td>
             </tr>
             <tr>
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Post Code
                 </th>
-                <td class="p-2 pl-4 pr-4">PL1 4BL</td>
+                <td class="p-2 pl-4 pr-4">{{$member->postcode}}L</td>
             </tr>
         </table>
     </div>
@@ -111,44 +118,18 @@
         <table class="p-5 m-5 mb-10  border border-[rgb(220,220,220)] rounded-xl">
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Belt</th>
-                <td class="p-2 pl-4 pr-4">Brown</td>
+                <td class="p-2 pl-4 pr-4">{{$member->skill_level}}</td>
             </tr>
             <tr>
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Last
                     Promotion
                 </th>
-                <td class="p-2 pl-4 pr-4">12-05-2025</td>
+                <td class="p-2 pl-4 pr-4">{{$member->skill_level_updated ?? 'New member'}}</td>
             </tr>
 
 
         </table>
-        <form action="" class="flex flex-col p-5 rounded bg-gray-200">
-            @csrf
-            <label for="status" class="p-2 rounded bg-[var(--color-color_bg_table)] text-white">Update Belt</label>
-            <select name="stas#tus" id="status" class="p-2 outline-none bg-white">
-                <option value="1">White - 1 stripe</option>
-                <option value="2">White - 2 stripes</option>
-                <option value="3">White - 3 stripes</option>
-                <option value="4">White - 4 stripes</option>
-                <option value="5">Blue - 1 stripe</option>
-                <option value="6">Blue - 2 stripes</option>
-                <option value="7">Blue - 3 stripes</option>
-                <option value="8">Blue - 4 stripes</option>
-                <option value="9">Purple</option>
-                <option value="10">Brown</option>
-                <option value="11">Black</option>
-                <option value="12">Black - 1st degree</option>
-                <option value="13">Black - 2nd degree</option>
-                <option value="14">Black - 3rd degree</option>
-            </select>
-            <button type="submit" class="p-2 bg-blue-500 mt-8 text-white cursor-pointer">Confirm</button>
-        </form>
-        <form action="" class="flex flex-col p-5 mt-5 rounded bg-gray-200">
-            @csrf
-            <label for="status" class="p-2 rounded bg-[var(--color-color_bg_table)] text-white">Updated Date</label>
-            <input type="date" name="stas#tus" id="status" class="p-2 outline-none bg-white">
-            <button type="submit" class="p-2 bg-blue-500 mt-8 text-white cursor-pointer">Confirm Date</button>
-        </form>
+
     </div>
     <div class="m-5 p-5 rounded-xl shadow-xl linear duration-300 hover:scale-104">
         <p class="w-full   pb-3 border-b-1 border-grey-50 text-center uppercase">Created/Updated </p>
@@ -157,12 +138,12 @@
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Created at
                 </th>
-                <td class="p-2 pl-4 pr-4">16-05-2016</td>
+                <td class="p-2 pl-4 pr-4">{{$member->created_at}}</td>
             </tr>
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Updated at
                 </th>
-                <td class="p-2 pl-4 pr-4">15-05-2025</td>
+                <td class="p-2 pl-4 pr-4">{{$member->updated_at}}</td>
             </tr>
 
 

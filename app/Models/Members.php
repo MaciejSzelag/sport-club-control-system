@@ -21,6 +21,8 @@ class Members extends Model
         'emergency_name',
         'membership_plan',
         'skill_level',
-        // 'skill_level_updated',
-        'start_day'];
+        'skill_level_updated',
+        'start_day',
+        'status'];
+
 }
