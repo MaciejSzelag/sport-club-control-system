@@ -23,22 +23,23 @@ class MemberRequest extends FormRequest
     {
         $rules = [
             // 'email'           => 'required|email|unique:members,email',
-            'name'            => 'required|max:100',
-            'last_name'       => 'required|max:100',
-            'birth_date'      => 'required|date',
-            'nationality'     => 'required|max:100',
-            'mobile'          => 'required|max:20',
-            'address'         => 'required|max:255',
-            'postcode'        => 'required|max:10',
-            'emergency_phone' => 'required|max:20',
-            'emergency_name'  => 'required|max:100',
-            'membership_plan' => 'required|max:100',
-            'skill_level'     => 'required|max:50',
-            'start_day'       => 'required|date',
-            'status'          => 'sometimes|required',
+            'name'                => 'required|max:100',
+            'last_name'           => 'required|max:100',
+            'birth_date'          => 'required|date',
+            'nationality'         => 'required|max:100',
+            'mobile'              => 'required|max:20',
+            'address'             => 'required|max:255',
+            'postcode'            => 'required|max:10',
+            'emergency_phone'     => 'required|max:20',
+            'emergency_name'      => 'required|max:100',
+            'membership_plan'     => 'required|max:100',
+            'skill_level'         => 'required|max:50',
+            'start_day'           => 'required|date',
+            'status'              => 'sometimes|required',
+            'skill_level_updated' => 'sometimes|date',
         ];
 
-        if ($this->isMethod('patch') || $this->isMethod('put')) {
+        if ($this->isMethod('PATCH') || $this->isMethod('PUT')) {
             $rules['email'] = [
                 'required',
                 'email',

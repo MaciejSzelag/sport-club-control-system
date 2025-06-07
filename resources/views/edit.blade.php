@@ -185,6 +185,20 @@ Edit - {{$member->name}} {{$member->last_name}}
                         </select>
                     </div>
                     <div class="mt-3">
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="start_day">
+                            Start date
+                            @error('start_day')
+                            <span class="text-red-400 text-xs"> - * {{$message}}&downarrow;</span>
+                            @enderror
+                        </label>
+
+
+                        <input
+                            class="w-full p-2 border border-gray-300 bg-gray-100 rounded-[50px]  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            type="date" name="start_day" id="start_day"
+                            value="{{$member->start_day ?? old('start_day')}}" />
+                    </div>
+                    <div class="mt-3">
                         <label class="block mb-2 text-sm font-medium text-gray-700" for="status">
                             Change Status
                             @error('status')
@@ -239,8 +253,8 @@ Edit - {{$member->name}} {{$member->last_name}}
                         </select>
                     </div>
                     <div class="mt-3">
-                        <label class="block mb-2 text-sm font-medium text-gray-700" for="start_day">
-                            Start date
+                        <label class="block mb-2 text-sm font-medium text-gray-700" for="skill_level_updated">
+                            Promotion Date
                             @error('start_day')
                             <span class="text-red-400 text-xs"> - * {{$message}}&downarrow;</span>
                             @enderror
@@ -249,8 +263,9 @@ Edit - {{$member->name}} {{$member->last_name}}
 
                         <input
                             class="w-full p-2 border border-gray-300 bg-gray-100 rounded-[50px]  focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            type="date" name="start_day" id="start_day"
-                            value="{{$member->start_day ?? old('start_day')}}" />
+                            type="date" name="skill_level_updated" id="skill_level_updated"
+                            value="{{$member->skill_level_updated ?? old('skill_level_updated')}}" />
+                        {{-- value="{{$member->start_day ?? old('start_day')}}" /> --}}
                     </div>
                 </div>
             </div>

@@ -11,15 +11,13 @@
 @section('content')
 @section('btns')
 <a href="{{route('edit.user',['member'=>$member->id])}}"
-    class="w-full pt-2 pb-2 pl-1 pr-1 hover:bg-white uppercase text-sm hover:scale-95 easy-in-out duration-100 cursor-pointer text-white hover:text-black">|
-    <span class="text-[var(--color-secondary)] hover:text-[var(--color-primary_2)] ">
-        &harr;</span>
-    Edit</a>
-<form action=""
+    class="w-full pt-2 pb-2 pl-1 pr-1 hover:bg-white uppercase text-sm hover:scale-95 easy-in-out duration-100 cursor-pointer text-white hover:text-black">
+    <span class="text-amber-400">| &harr; </span>Edit</a>
+<form action="{{route('delete.member', ['member'=>$member->id])}}" method="post"
     class="w-full pt-2 pb-2 pl-1 pr-1 hover:bg-white  text-sm hover:scale-95 easy-in-out duration-100 cursor-pointer text-white hover:text-black">
-    <button type="submit" class="uppercase">| <span
-            class="mr-1 text-[var(--color-secondary)] hover:text-[var(--color-primary_2)] ">
-            &#x3C7;</span>Remove Member</button>
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="uppercase"> <span class="text-red-400">| &#x3C7; </span>Remove Member</button>
 </form>
 
 
@@ -29,22 +27,23 @@
         <p class="w-full pb-3 border-b-1 border-grey-50 text-center uppercase">Status</p>
         <table class="p-5 m-5 mb-10 border border-[rgb(220,220,220)] rounded-xl">
             <tr class="border-b-1">
-                <th class="p-2 m-1 bg-[var(--color-color_bg_table)] text-[white] text-left overflow-hidden">Membership
+                <th class="p-2 m-1 bg-[var(--color-color_bg_table)] text-[white] text-left overflow-hidden">
+                    Membership
                     status</th>
 
 
                 @if($member->status == 1)
                 <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-green-700 bg-green-100 text-green-600">Active</td>
                 @elseif($member->status == 0)
-                <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-blue-700 bg-blue-100 text-blue-600">Suspended</td>
-                @else
                 <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-red-700 bg-red-100 text-red-600">Inactive</td>
-
+                @else
+                <td class="p-2 pr-4 pl-4 m-1 border-b-1 border-blue-700 bg-blue-100 text-blue-600">Suspended</td>
                 @endif
             </tr>
 
             <tr>
-                <th class="p-2 m-1 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Membership
+                <th class="p-2 m-1 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">
+                    Membership
                     Plan
                 </th>
                 <td class="p-2 m-1">{{$member->membership_plan}}</td>
@@ -59,21 +58,23 @@
 
 
             <tr class="border-b-1">
-                <th class="p-2 m-1 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Start Date
+                <th class="p-2 m-1 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Start
+                    Date
                 </th>
                 <td class="p-2 m-1">{{$member->start_day}}</td>
             </tr>
             <tr class="border-b-1">
                 <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">
-                    {{$member->nationality}}
+                    Nationality
                 </th>
-                <td class="p-2 pl-4 pr-4">Poland</td>
+                <td class="p-2 pl-4 pr-4"> {{$member->nationality}}</td>
             </tr>
 
             <tr class="border-b-1">
-                <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Date of birth
+                <th class="p-2 bg-[var(--color-color_bg_table)]  text-[white] text-left overflow-hidden">Date of
+                    birth
                 </th>
-                <td class="p-2 pl-4 pr-4">{{$member->birth_date}}</td>
+                <td class="p-2 pl-4 pr-4">{{$birthday}}</td>
             </tr>
 
             <tr>

@@ -23,6 +23,7 @@ Route::get('/user/{member}', function (Members $member) {
     return view('user', [
         'member'    => $member,
         'memberAge' => Carbon::parse($member->birth_date)->age,
+        'birthday'  => Carbon::parse($member->birth_date)->format('d-m-Y'),
 
     ]);
 })->name('show.user');
@@ -44,12 +45,23 @@ Route::post('/members', function (MemberRequest $request) {
     // dd($request->all());
     $member = Members::create($request->validated());
     // $member->save();
-    return redirect()->route('show.user', ['member' => $member->id]);
+    return redirect()
+        ->route('show.user', ['member' => $member->id])
+        ->with('success', $member->name . ' ' . $member->last_name . ' has been added.');
 })->name('member.store');
 
 Route::put('member/{member}', function (Members $member, MemberRequest $request) {
     $member->update($request->validated());
     return redirect()
-        ->route('show.user', ['member' => $member->id]);
+        ->route('show.user', ['member' => $member->id])
+        ->with('success', $member->name . '\'s details have been updated');
 
 })->name('member.update');
+
+Route::delete('/member/{member}/delete', function (Members $member) {
+    $member->delete();
+    return redirect()
+        ->route('all.members')
+        ->with('success', $member->name . ' has been deleted :(');
+
+})->name('delete.member');

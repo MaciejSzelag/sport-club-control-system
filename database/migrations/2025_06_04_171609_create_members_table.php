@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -26,7 +27,7 @@ return new class extends Migration
             $table->string('emergency_name');
             $table->string('membership_plan');
             $table->string('skill_level');
-            $table->date('skill_level_updated')->nullable();
+            $table->date('skill_level_updated')->default(DB::raw('CURRENT_DATE'));
             $table->date('start_day');
             $table->timestamps();
         });

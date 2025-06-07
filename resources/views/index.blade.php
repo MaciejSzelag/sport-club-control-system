@@ -66,7 +66,7 @@ All Members
             </tr>
             @empty
             <tr>
-                <td class="p-2 m-1 border-b-1 border-grey-400">Brak zadań do wyświetlenia.</td>
+                <td colspan="6" class="p-2 m-1 border-b-1 border-grey-400 text-center">Brak zadań do wyświetlenia.</td>
             </tr>
             @endforelse
         </table>

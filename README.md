@@ -5,13 +5,8 @@ This is a custom-built sports club management system, developed as part of my le
 While the main purpose of this project is educational and portfolio-building, I do not exclude the possibility of developing it into a commercial product in the future.
 
 ## Features (current and planned)
-- User registration and login
-- Member management
-- Admin panel
-- Payment system and membership statuses
-- Reports and statistics
-- Internal communication module
-- Events and training calendar
+- Simple member management
+
 
 ## Technologies Used
 - Laravel 12 (backend framework)
